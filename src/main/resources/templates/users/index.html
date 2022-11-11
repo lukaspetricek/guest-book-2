@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Super Duper Blog</title>
+  <link th:href="@{/style.css}" rel="stylesheet"/>
 </head>
 <body>
 <h1>Users List</h1>
@@ -18,6 +19,7 @@
 <!--seznam NENI prazdny, vypiseme nick a datum rregistrace-->
 <table th:unless="${listOfAllUser.size < 1}">
   <thead>
+  <!--suppress HtmlUnknownTag -->
   <th>Registered Users</th>
   </thead>
 

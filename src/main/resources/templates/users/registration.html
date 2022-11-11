@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Super Duper Blog</title>
+  <link th:href="@{/style.css}" rel="stylesheet"/>
 </head>
 <body>
 <h1>Registration Form</h1>
 <h2>Register User</h2>
 <form action="#" th:action="@{/users/registration}" th:object="${user}" method="post">
-  <input type="text" th:field="*{username}" placeholder="Insert Your Username">
+  <label>
+    <input type="text" th:field="*{username}" placeholder="Insert Your Username">
+  </label>
   <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
 
-  <input type="text" th:field="*{password}" placeholder="Insert Your Password">
+  <label>
+    <input type="text" th:field="*{password}" placeholder="Insert Your Password">
+  </label>
   <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
 
   <!--      kdyz je tu toto nebude se duplikovat radek /jedno z reseni pri editu -->
