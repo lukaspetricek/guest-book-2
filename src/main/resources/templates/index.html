@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Super Duper Blog</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Super Duper Blog</title>
+    </head>
     <body>
         <h1>Super Duper Blog</h1>
+        <table>
+            <tr>
+                <th>Posted by:</th>
+                <th>Date:</th>
+                <th>Content:</th>
+            </tr>
+            <tr th:each="message : ${listOfMessages}">
+                <td th:text="${message.username}"></td>
+                <td th:text="${message.date}"></td>
+                <td th:text="${message.content}"></td>
+            </tr>
+
+
+        </table>
+
+
 
 
     </body>
