@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>New post</title>
+    </head>
+    <body>
+        <h1>New post</h1>
+        <form action="#" th:action="@{/post/checkPost}" th:object="${post}" method="post">
+            <label>
+                <input type="text" th:field="${post.title}" placeholder="Enter post title">
+            </label>
+            <br>
+            <label>
+                <textarea th:field="${post.content}" placeholder="Enter post content"></textarea>
+            </label>
+            <br>
+        <button type="submit">Save post</button>
+        <button type="reset">Clear post</button>
+        </form>
+        <a th:href="@{/}">Go back</a>
+    </body>
+</html>

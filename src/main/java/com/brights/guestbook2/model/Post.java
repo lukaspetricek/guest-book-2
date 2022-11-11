@@ -5,9 +5,10 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.Instant;
 
+@SuppressWarnings({"JpaDataSourceORMInspection", "unused"})
 @Entity
-@Table(name ="messages")
-public class Message {
+@Table(name ="posts")
+public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,19 +24,19 @@ public class Message {
 
     @NotEmpty(message = "Message should not be empty.")
     @NotNull
-    @Column(name = "post")
-    private String post;
+    @Column(name = "content")
+    private String content;
 
     private Instant postedWhen;
 
-    public Message() {
+    public Post() {
     }
 
-    public Message(long id, User user, String title, String post, Instant postedWhen) {
+    public Post(long id, User user, String title, String content, Instant postedWhen) {
         this.id = id;
         this.user = user;
         this.title = title;
-        this.post = post;
+        this.content = content;
         this.postedWhen = postedWhen;
     }
 
@@ -51,8 +52,8 @@ public class Message {
         return title;
     }
 
-    public String getPost() {
-        return post;
+    public String getContent() {
+        return content;
     }
 
     public Instant getPostedWhen() {
