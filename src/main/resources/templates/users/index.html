@@ -17,7 +17,7 @@
 </p>
 
 <!--seznam NENI prazdny, vypiseme nick a datum rregistrace-->
-<table th:unless="${listOfAllUser.size < 1}">
+<table th:if="${listOfAllUser.size > 1}">
   <thead>
   <!--suppress HtmlUnknownTag -->
   <th>Registered Users</th>

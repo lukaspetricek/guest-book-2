@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Super Duper Blog</title>
+</head>
+<body>
+<h1>Users List</h1>
+
+<!--seznam NENI prazdny, vypiseme nick a datum rregistrace-->
+<table th:="${listOfAllUser.size > 1}">
+    <thead>
+    <th>Registered Users</th>
+    </thead>
+
+    <!-- pokud neni prazdno -->
+    <tbody>
+    <tr th:each="user : ${listOfAllUser}">
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.admin}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

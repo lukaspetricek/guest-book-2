@@ -16,7 +16,7 @@ public class MainPageController {
         this.postService = postService;
     }
 
-    @GetMapping("/")
+    @GetMapping("*")
     public String homePage(Model model){
         model.addAttribute("listOfPosts", postService.getAllPosts());
         return "index";
