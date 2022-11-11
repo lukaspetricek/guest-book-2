@@ -3,7 +3,6 @@ package com.brights.guestbook2.service;
 import com.brights.guestbook2.model.User;
 import com.brights.guestbook2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;

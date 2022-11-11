@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Super Duper Blog</title>
+</head>
+<body>
+<h1>Users List</h1>
+
+<a th:href="@{/users/registration}">Register now!</a>
+<br><br>
+
+<!--seznam je prazdny, tak to vypiseme-->
+<p th:if="${listOfAllUser.size < 1}">
+  <span>There is not any registered user yet.</span>
+</p>
+
+<!--seznam NENI prazdny, vypiseme nick a datum rregistrace-->
+<table th:unless="${listOfAllUser.size < 1}">
+  <thead>
+  <th>Registered Users</th>
+  </thead>
+
+  <!-- pokud neni prazdno -->
+  <tbody>
+  <tr th:each="user : ${listOfAllUser}">
+    <td th:text="${user.username}"></td>
+
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
