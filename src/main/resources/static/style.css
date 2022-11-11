@@ -5,7 +5,7 @@ h1{
 body{
     height: 55px;
     background-color: gray; /* For browsers that do not support gradients */
-    background-image: linear-gradient(to right, black, gray, darkgray);
+    background-image: linear-gradient(to right, gray, darkgray);
     margin: auto;
     width: 50%;
     padding: 10px;
@@ -18,7 +18,7 @@ body{
 }
 button,a{
     background-color: gray;
-    background-image: linear-gradient(to right, black, lightgray);
+    background-image: linear-gradient(to right, gray, lightgray);
     border: none;
     color: black;
     padding: 15px 32px;
@@ -33,7 +33,7 @@ button,a:hover {background-color: gray}
 
 button,a:active {
     background-color: gray;
-    background-image: linear-gradient(to right, black,lightgray);
+    background-image: linear-gradient(to right, gray, darkgray);
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }

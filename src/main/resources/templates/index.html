@@ -6,6 +6,7 @@
         <link th:href="@{/style.css}" rel="stylesheet"/>
     </head>
     <body>
+        <a th:href="@{/users}">Login/Register</a>
         <h1>Super Duper Blog</h1>
             <div id="blog" th:each="post : ${listOfPosts}">
                 <p th:text="${'Posted by: ' + post.user}" ></p><br>
