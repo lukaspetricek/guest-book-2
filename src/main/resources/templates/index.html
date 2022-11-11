@@ -3,14 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <title>Super Duper Blog</title>
+        <link th:href="@{/style.css}" rel="stylesheet"/>
     </head>
     <body>
         <h1>Super Duper Blog</h1>
-            <div th:each="post : ${listOfPosts}">
-                <p th:text="${post.user}">Posted by:</p><br>
-                <p th:text="${post.postedWhen}">Date:</p><br>
-                <p th:text="${post.content}">Content:</p><br>
+            <div id="blog" th:each="post : ${listOfPosts}">
+                <p th:text="${'Posted by: ' + post.user}" ></p><br>
+                <p th:text="${'Date: ' + post.postedWhen}"></p><br>
+                <p th:text="${'Title: ' + post.title}"></p><br>
+                <p th:text="${'Content: ' + post.content}"></p><br>
             </div>
-        <a th:href="@{post/new}">Add new post</a>
+        <a th:href="@{/post/add}">Add new post</a>
     </body>
 </html>

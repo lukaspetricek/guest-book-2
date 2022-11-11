@@ -2,8 +2,7 @@ package com.brights.guestbook2.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @SuppressWarnings({"JpaDataSourceORMInspection", "unused"})
 @Entity
@@ -18,26 +17,18 @@ public class Post {
     private User user;
 
     @NotEmpty(message = "Title should not be empty.")
-    @NotNull
-    @Column(name = "title")
+    @Column(name = "title",nullable = false)
     private String title;
 
     @NotEmpty(message = "Message should not be empty.")
-    @NotNull
-    @Column(name = "content")
+    @Column(name = "content",nullable = false)
     private String content;
 
-    private Instant postedWhen;
+    @Column(name = "date",nullable = false)
+    private LocalDateTime postedWhen;
 
     public Post() {
-    }
-
-    public Post(long id, User user, String title, String content, Instant postedWhen) {
-        this.id = id;
-        this.user = user;
-        this.title = title;
-        this.content = content;
-        this.postedWhen = postedWhen;
+        postedWhen = LocalDateTime.now();
     }
 
     public long getId() {
@@ -56,7 +47,27 @@ public class Post {
         return content;
     }
 
-    public Instant getPostedWhen() {
+    public LocalDateTime getPostedWhen() {
         return postedWhen;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setPostedWhen(LocalDateTime postedWhen) {
+        this.postedWhen = postedWhen;
     }
 }

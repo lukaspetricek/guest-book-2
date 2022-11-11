@@ -1,0 +1,39 @@
+h1{
+    text-align: center;
+    font-weight: bold;
+}
+body{
+    height: 55px;
+    background-color: gray; /* For browsers that do not support gradients */
+    background-image: linear-gradient(to right, black, gray, darkgray);
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+#blog{
+    border: solid black 2px;
+    border-collapse: collapse;
+    text-align: center;
+    margin: 10px;
+}
+button,a{
+    background-color: gray;
+    background-image: linear-gradient(to right, black, lightgray);
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 70%;
+
+}
+button,a:hover {background-color: gray}
+
+button,a:active {
+    background-color: gray;
+    background-image: linear-gradient(to right, black,lightgray);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
