@@ -6,28 +6,11 @@
     </head>
     <body>
         <h1>Super Duper Blog</h1>
-        <p th:if="${listOfPosts.isEmpty()}">There are no posts, be the first to post something!</p>
-        <div th:if="${!listOfPosts.isEmpty()}">
-
-            <table>
-                <tr>
-                    <th>Posted by:</th>
-                    <th>Date:</th>
-                </tr>
-                <tr th:each="post : ${listOfPosts}">
-                    <td th:text="${post.user}"></td>
-                    <td th:text="${post.postedWhen}"></td>
-                </tr>
-            </table>
-            <p>Content:</p><br>
-            <p> th:text="${post.content}"></p>
-
-
-        </div>
-    <a th:href="@{post/new}">Add new post</a>
-
-
-
-
+            <div th:each="post : ${listOfPosts}">
+                <p th:text="${post.user}">Posted by:</p><br>
+                <p th:text="${post.postedWhen}">Date:</p><br>
+                <p th:text="${post.content}">Content:</p><br>
+            </div>
+        <a th:href="@{post/new}">Add new post</a>
     </body>
 </html>
