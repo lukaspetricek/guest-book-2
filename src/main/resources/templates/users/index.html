@@ -17,14 +17,14 @@
   <span>There is not any registered user yet.</span>
 </p>
 
-<!--seznam NENI prazdny, vypiseme nick a datum rregistrace-->
+<!--seznam NENI prazdny, vypiseme nick a ev. datum registrace-->
 <table th:if="${listOfAllUser.size > 1}">
   <thead>
   <!--suppress HtmlUnknownTag -->
   <th>Registered Users</th>
   </thead>
 
-  <!-- pokud neni prazdno -->
+<!--pokud jsou registrovani uzivatele, vypis je-->
   <tbody>
   <tr th:each="user : ${listOfAllUser}">
     <td th:text="${user.username}"></td>

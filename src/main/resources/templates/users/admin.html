@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Super Duper Blog</title>
+    <link th:href="@{/style.css}" rel="stylesheet"/>
 </head>
 <body>
 <h1>Users List</h1>
-
-<!--seznam NENI prazdny, vypiseme nick a datum rregistrace-->
-<table th:="${listOfAllUser.size > 1}">
-    <thead>
-    <th>Registered Users</th>
-    </thead>
-
-    <!-- pokud neni prazdno -->
-    <tbody>
-    <tr th:each="user : ${listOfAllUser}">
+    <table th:each="user : ${listOfAllUser}">
+        <thead>
+        <th>User name</th>
+        <th>Registration ID</th>
+        <th>Admin rights</th>
+        </thead>
+        <tbody>
         <td th:text="${user.username}"></td>
+        <td th:text="${user.id}"></td>
         <td th:text="${user.admin}"></td>
-    </tr>
-    </tbody>
+
+        </tbody>
+    </table>
+
 </table>
 </body>
 </html>

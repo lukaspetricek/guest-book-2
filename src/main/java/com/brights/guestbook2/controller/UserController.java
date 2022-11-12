@@ -3,7 +3,6 @@ package com.brights.guestbook2.controller;
 import com.brights.guestbook2.model.User;
 import com.brights.guestbook2.service.PostService;
 import com.brights.guestbook2.service.UserService;
-import com.brights.guestbook2.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +25,7 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public String register(Model model) {
+    public String showUsers(Model model) {
         model.addAttribute("listOfAllUser", userService.getAllUsers());
 
         return "users/index";
@@ -40,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping("users/registration")
-    public String saveUser(@Valid @ModelAttribute User user,
+    public String saveUserRegistration(@Valid @ModelAttribute User user,
             BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
@@ -49,14 +48,20 @@ public class UserController {
 
         userService.saveUser(user);
 
-        return "index";
+        return "redirect:/";
     }
 
     @GetMapping("/users/error")
     public String showErrorPage(Model model) {
-        model.addAttribute("user", new User());
+        //model.addAttribute("user", new User());
 
         return "users/error";
     }
 
+    @GetMapping("/users/admin")
+    public String showAdminPage(Model model) {
+        model.addAttribute("listOfAllUser", userService.getAllUsers());
+
+        return "users/admin";
+    }
 }
