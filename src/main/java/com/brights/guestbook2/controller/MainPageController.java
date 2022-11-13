@@ -16,6 +16,11 @@ public class MainPageController {
         this.postService = postService;
     }
 
+    @GetMapping("*")
+    public String userLost(Model model) {
+        return"redirect:/";
+    }
+
     @GetMapping("/")
     public String homePage(Model model){
         model.addAttribute("listOfPosts", postService.getAllPosts());
