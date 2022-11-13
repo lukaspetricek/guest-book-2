@@ -64,4 +64,11 @@ public class UserController {
 
         return "users/admin";
     }
+
+    @GetMapping("users/admin/showFormForDelete/{id}")
+    public String deleteUser(@PathVariable(value = "id") Long id) {
+
+        userService.deleteUserById(id);
+        return "redirect:/users/admin";
+    }
 }

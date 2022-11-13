@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @SuppressWarnings("unused")
 @Entity
@@ -27,6 +28,9 @@ public class User {
 
     @Column
     private boolean admin;
+
+    @OneToMany (mappedBy = "user")
+    private List<Post> post;
 
     public User() {
     }
@@ -61,4 +65,5 @@ public class User {
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
+
 }

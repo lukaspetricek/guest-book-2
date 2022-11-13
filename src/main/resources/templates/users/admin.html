@@ -9,15 +9,22 @@
 <h1>Users List</h1>
     <table th:each="user : ${listOfAllUser}">
         <thead>
-        <th>User name</th>
         <th>Registration ID</th>
+        <th>User name</th>
         <th>Admin rights</th>
+        <th>Modify account</th>
         </thead>
         <tbody>
-        <td th:text="${user.username}"></td>
         <td th:text="${user.id}"></td>
-        <td th:text="${user.admin}"></td>
-
+        <td th:text="${user.username}"></td>
+<!--        <td th:text="${user.admin}"></td>-->
+        <td th:if="${user.admin}" th:text="Yes"></td>
+        <td th:unless="${user.admin}" th:text="No"></td>
+        <td>
+            <a th:href="@{/users/admin/showFormForUpdate/{id}(id=${user.id})}">update</a>
+            <a th:href="@{/users/admin/showFormForDelete/{id}(id=${user.id})}">delete</a>
+        </td>
+        <td>
         </tbody>
     </table>
 
