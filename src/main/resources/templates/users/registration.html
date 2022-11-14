@@ -8,22 +8,54 @@
 <body>
 <h1>Registration Form</h1>
 
-<form action="#" th:action="@{/users/registration}" th:object="${user}" method="post">
-  <label>
-    <input type="text" th:field="*{username}" placeholder="Insert Your Username">
-  </label>
-  <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
-
-  <label>
-    <input type="password" th:field="*{password}" placeholder="Insert Your Password">
-  </label>
-  <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
-
-  <!--      kdyz je tu toto nebude se duplikovat radek /jedno z reseni pri editu -->
-<!--  <input type="hidden" th:field="*{id}">-->
-  <button type="submit">Finish</button>
-</form>
+<div class="container text-center">
+  <div>
+    <h1>User Registration - Sign Up</h1>
+  </div>
+  <form th:action="@{/process_register}" th:object="${user}"
+        method="post" style="max-width: 600px; margin: 0 auto;">
+    <table>
+      <tr>
+        <td>
+          <label>E-mail:
+            <input type="email" th:field="*{email}" required />
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Username:
+            <input type="text" th:field="*{username}" required />
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Password:
+            <input type="password" th:field="*{password}"
+                   required minlength="8" maxlength="64"/>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>First Name:
+            <input type="text" th:field="*{firstName}" required />
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Last Name:
+            <input type="text" th:field="*{lastName}"/>
+          </label>
+        </td>
+      </tr>
+    </table>
+    <button type="submit" >Sign Up</button>
+  </form>
 <hr>
+</div>
 <a th:href="@{/users}">Back to User List</a>
 </body>
 </html>
