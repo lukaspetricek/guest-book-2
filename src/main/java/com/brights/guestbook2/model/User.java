@@ -14,17 +14,24 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(nullable = false, unique = true, length = 45)
+    private String email;
     @Column
-    @NotNull
     @NotEmpty
     @Size(min = 2, max = 30, message = "Username/nickname size should be between 2 and 30 characters.")
     private String username;
 
-    @Column
+    @Column(nullable = false,length = 64)
     @NotNull
     @NotEmpty
-    @Size(min = 8, max = 50, message = "Password size should be between 8 and 30 characters.")
+    @Size(min = 8, max = 64, message = "Password size should be between 8 and 64 characters.")
     private String password;
+
+    @Column(name = "first_name", nullable = false, length = 20)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false, length = 20)
+    private String lastName;
 
     @Column
     private boolean admin;
@@ -33,7 +40,6 @@ public class User {
     private List<Post> postList;
 
     public User() {
-        this.setUsername("Guest");
     }
 
     public Long getId() {
@@ -68,11 +74,35 @@ public class User {
         this.admin = admin;
     }
 
-    public List<Post> getPostList() {
-        return postList;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPost(List<Post> posts) {
-        this.postList = posts;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPostList(List<Post> postList) {
+        this.postList = postList;
+    }
+
+    public List<Post> getPostList() {
+        return postList;
     }
 }
