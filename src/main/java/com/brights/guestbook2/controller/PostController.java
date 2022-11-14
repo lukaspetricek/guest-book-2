@@ -5,6 +5,7 @@ import com.brights.guestbook2.model.Post;
 import com.brights.guestbook2.service.PostService;
 import com.brights.guestbook2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,7 +36,9 @@ public class PostController {
     }
 
     @PostMapping("/post/checkPost")
-    public String checkPost(@Valid Post post, BindingResult bindingResult){
+    public String checkPost(@Valid Post post, BindingResult bindingResult,Model model){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", principal);
         if (bindingResult.hasErrors()) {
             return "post/new";
         }

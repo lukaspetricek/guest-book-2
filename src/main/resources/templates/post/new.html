@@ -8,6 +8,7 @@
     <body>
         <h1>New post</h1>
         <form action="#" th:action="@{/post/checkPost}" th:object="${post}" method="post">
+<!--            <input type="hidden" th:field="*{user.id}"> TODO FIX ADDING USER TO POST-->
             <label>
                 <input type="text" th:field="*{title}" placeholder="Enter post title">
             </label>

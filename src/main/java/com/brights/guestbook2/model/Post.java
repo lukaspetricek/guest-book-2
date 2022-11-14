@@ -5,7 +5,7 @@ import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@SuppressWarnings({"JpaDataSourceORMInspection", "unused"})
+@SuppressWarnings({"unused"})
 @Entity
 @Table(name ="posts")
 public class Post {
@@ -14,8 +14,8 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
     @NotEmpty(message = "Title should not be empty.")
