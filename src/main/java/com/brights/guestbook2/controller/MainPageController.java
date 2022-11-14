@@ -2,39 +2,42 @@ package com.brights.guestbook2.controller;
 
 import com.brights.guestbook2.model.Comment;
 import com.brights.guestbook2.model.User;
-import com.brights.guestbook2.service.PostService;
+import com.brights.guestbook2.repository.PostRepository;
+import com.brights.guestbook2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+
+@SuppressWarnings("unused")
 @Controller
 public class MainPageController {
     @Autowired
-    private PostService postService;
+    private PostRepository postRepository;
 
     @Autowired
-    public MainPageController(PostService postService) {
-        this.postService = postService;
-    }
+    private UserRepository userRepository;
 
+    public MainPageController(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
     @GetMapping("*")
-    public String userLost(Model model) {
+    public String userLost() {
         return"redirect:/";
     }
 
     @GetMapping("/")
-    public String homePage(Model model){
-        User user = new User();
-        model.addAttribute("listOfPosts", postService.getAllPosts());
-        model.addAttribute("user", user);
+    public String homePage(@ModelAttribute("sessionUser") User sessionUser, Model model){
+        model.addAttribute("listOfPosts", postRepository.findAll());
         return "index";
     }
     @GetMapping("/comment/{id}")
     public String commentPost(@PathVariable(value = "id") Long id, Model model) {
         Comment comment = new Comment();
-        model.addAttribute("post",postService.getPostById(id));
+        model.addAttribute("post",postRepository.findById(id));
         model.addAttribute("comment",comment);
         return "post/comments";
     }

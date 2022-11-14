@@ -4,6 +4,7 @@ import com.brights.guestbook2.model.User;
 import com.brights.guestbook2.service.PostService;
 import com.brights.guestbook2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,13 +12,14 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 @Controller
 public class UserController {
 
 
-    private UserService userService; //invoking interface only
+    private final UserService userService; //invoking interface only
 
-    private PostService postService;
+    private final PostService postService;
 
     @Autowired
     public UserController(UserService userService, PostService postService) {
@@ -33,7 +35,7 @@ public class UserController {
     }
 
     @GetMapping("users/registration")
-    public String showUserRegistration(Model model) {
+    public String showUserRegistrationForm(Model model) {
         model.addAttribute("user", new User());
 
         return "users/registration";
@@ -50,6 +52,16 @@ public class UserController {
         userService.saveUser(user);
 
         return "redirect:/";
+    }
+    @PostMapping("/process_register")
+    public String processRegister(User user) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+
+        userService.saveUser(user);
+
+        return "users/register_success";
     }
 
     @GetMapping("/users/admin")
@@ -77,6 +89,7 @@ public class UserController {
         return "redirect:/users/admin";
     }
 
+    @SuppressWarnings("unused")
     @GetMapping("/users/error")
     public String showErrorPage(Model model) {
         //model.addAttribute("user", new User());
