@@ -6,24 +6,23 @@
   <link th:href="@{/style.css}" rel="stylesheet"/>
 </head>
 <body>
-<h1>Registration Form</h1>
+<h1>Edit User Account</h1>
 
 <form action="#" th:action="@{/users/registration}" th:object="${user}" method="post">
   <label>
-    <input type="text" th:field="*{username}" placeholder="Insert Your Username">
+    <input type="text" th:field="*{username}" placeholder="Edit username">
   </label>
   <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
 
-  <label>
-    <input type="text" th:field="*{password}" placeholder="Insert Your Password">
-  </label>
-  <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+  <select th:field="*{user.admin}">
+    <option th:value="'True'" th:text="Yes"></option>
+    <option th:value="'False'" th:text="No"></option>
+  </select>
 
-  <!--      kdyz je tu toto nebude se duplikovat radek /jedno z reseni pri editu -->
 <!--  <input type="hidden" th:field="*{id}">-->
   <button type="submit">Save User</button>
 </form>
 <hr>
-<a th:href="@{/users}">Back to User List</a>
+<a th:href="@{/}">Back To Guest Book.</a>
 </body>
 </html>

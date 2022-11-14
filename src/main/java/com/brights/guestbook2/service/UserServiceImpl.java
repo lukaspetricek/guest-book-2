@@ -25,7 +25,6 @@ public class UserServiceImpl implements UserService{
         this.userRepository.save(user);
     }
 
-    @SuppressWarnings("UnusedAssignment")
     @Override
     public User getUserById(long id) {
         Optional<User> optional = this.userRepository.findById(id);  //impl. could be null or empty

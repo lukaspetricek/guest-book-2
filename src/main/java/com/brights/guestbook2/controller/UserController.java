@@ -14,6 +14,7 @@ import javax.validation.Valid;
 @Controller
 public class UserController {
 
+
     private UserService userService; //invoking interface only
 
     private PostService postService;
@@ -45,24 +46,27 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "users/registration";
         }
-
         userService.saveUser(user);
 
         return "redirect:/";
     }
 
-    @GetMapping("/users/error")
-    public String showErrorPage(Model model) {
-        //model.addAttribute("user", new User());
-
-        return "users/error";
-    }
-
     @GetMapping("/users/admin")
     public String showAdminPage(Model model) {
+        model.addAttribute("user", new User());
         model.addAttribute("listOfAllUser", userService.getAllUsers());
 
         return "users/admin";
+    }
+
+    @GetMapping("users/admin/showFormForEdit/{id}")
+    public String editUser(@PathVariable(value = "id") Long id, Model model) {
+        User user = userService.getUserById(id);
+        model.addAttribute("user", user);
+
+        userService.saveUser(user);
+
+        return "redirect:/users/edit";
     }
 
     @GetMapping("users/admin/showFormForDelete/{id}")
@@ -70,5 +74,12 @@ public class UserController {
 
         userService.deleteUserById(id);
         return "redirect:/users/admin";
+    }
+
+    @GetMapping("/users/error")
+    public String showErrorPage(Model model) {
+        //model.addAttribute("user", new User());
+
+        return "users/error";
     }
 }
