@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Comment post</title>
+</head>
+<body>
+<div id="blog">
+  <p th:text="${'Posted by: ' + post.user.username}" ></p><br>
+  <p th:text="${'Date: ' + post.postedAt}"></p><br>
+  <p th:text="${'Title: ' + post.title}"></p><br>
+  <p th:text="${post.content}"></p><br>
+  <table>
+    <tr>
+      <td>
+        <a>&#10084; Add to favourites</a>
+      </td>
+    </tr>
+  </table>
+  <p th:if="${post.commentList.isEmpty()}">There are no comments on this post, be the first to comment!!!</p>
+  <form action="#" th:action="@{/post/addComment/{id}(id=${post.id})}" method="post">
+    <label>
+      <textarea th:field="*{comment.content}" placeholder="Enter your comment"></textarea>
+    </label>
+    <p th:if="${#fields.hasErrors('comment.content')}" th:errors="*{comment.content}"></p><br>
+    <button type="submit">Save comment</button>
+    <button type="reset">Clear comment</button>
+  </form>
+  <div th:if="${!post.commentList.isEmpty()}">
+    <div id="comment" th:each="comment : ${post.commentList}">
+      <p th:text="${'Posted by: ' + comment.user.username}" ></p><br>
+      <p th:text="${'Date: ' + comment.createdAt}"></p><br>
+      <p th:text="${comment.content}"></p><br>
+      <a>&#128077;</a>
+      <a>&#128078;</a>
+      <a>Reply</a>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

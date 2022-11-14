@@ -30,9 +30,10 @@ public class User {
     private boolean admin;
 
     @OneToMany (mappedBy = "user")
-    private List<Post> post;
+    private List<Post> postList;
 
     public User() {
+        this.setUsername("Guest");
     }
 
     public Long getId() {
@@ -67,11 +68,11 @@ public class User {
         this.admin = admin;
     }
 
-    public List<Post> getPost() {
-        return post;
+    public List<Post> getPostList() {
+        return postList;
     }
 
-    public void setPost(List<Post> post) {
-        this.post = post;
+    public void setPost(List<Post> posts) {
+        this.postList = posts;
     }
 }

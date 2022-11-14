@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Super Duper Blog</title>
-  <link th:href="@{/style.css}" rel="stylesheet"/>
+  <link th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body>
 <h1>Registration Form</h1>
@@ -15,13 +15,13 @@
   <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
 
   <label>
-    <input type="text" th:field="*{password}" placeholder="Insert Your Password">
+    <input type="password" th:field="*{password}" placeholder="Insert Your Password">
   </label>
   <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
 
   <!--      kdyz je tu toto nebude se duplikovat radek /jedno z reseni pri editu -->
 <!--  <input type="hidden" th:field="*{id}">-->
-  <button type="submit">Save User</button>
+  <button type="submit">Finish</button>
 </form>
 <hr>
 <a th:href="@{/users}">Back to User List</a>

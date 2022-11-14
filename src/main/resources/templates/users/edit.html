@@ -11,10 +11,12 @@
 <form action="#" th:action="@{/users/registration}" th:object="${user}" method="post">
   <label>
     <input type="text" th:field="*{username}" placeholder="Edit username">
+    <input type="hidden" th:field="*{password}">
+    <input type="hidden" th:field="*{id}">
   </label>
   <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
 
-  <select th:field="*{user.admin}">
+  <select th:field="*{admin}">
     <option th:value="'True'" th:text="Yes"></option>
     <option th:value="'False'" th:text="No"></option>
   </select>

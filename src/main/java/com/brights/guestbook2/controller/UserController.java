@@ -41,7 +41,8 @@ public class UserController {
 
     @PostMapping("users/registration")
     public String saveUserRegistration(@Valid @ModelAttribute User user,
-            BindingResult bindingResult) {
+            BindingResult bindingResult, Model model) {
+        model.addAttribute("user", user);
 
         if (bindingResult.hasErrors()) {
             return "users/registration";
@@ -66,7 +67,7 @@ public class UserController {
 
         userService.saveUser(user);
 
-        return "redirect:/users/edit";
+        return "users/edit";
     }
 
     @GetMapping("users/admin/showFormForDelete/{id}")

@@ -40,10 +40,10 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void deletePostById(long id) {
-        boolean exists = this.postRepository.existsById(id);
+        boolean exists = postRepository.existsById(id);
         if (!exists) {
             throw new RuntimeException("Post with id " + id + " was not found.");
         }
-        this.postRepository.deleteById(id);
+        postRepository.deleteById(id);
     }
 }

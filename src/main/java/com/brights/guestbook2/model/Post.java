@@ -3,6 +3,7 @@ package com.brights.guestbook2.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @SuppressWarnings({"JpaDataSourceORMInspection", "unused"})
 @Entity
@@ -14,6 +15,7 @@ public class Post {
     private long id;
 
     @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     @NotEmpty(message = "Title should not be empty.")
@@ -25,10 +27,13 @@ public class Post {
     private String content;
 
     @Column(name = "date",nullable = false)
-    private LocalDateTime postedWhen;
+    private LocalDateTime postedAt;
+
+    @OneToMany (mappedBy = "post")
+    private List<Comment> commentList;
 
     public Post() {
-        postedWhen = LocalDateTime.now();
+        postedAt = LocalDateTime.now();
     }
 
     public long getId() {
@@ -47,8 +52,8 @@ public class Post {
         return content;
     }
 
-    public LocalDateTime getPostedWhen() {
-        return postedWhen;
+    public LocalDateTime getPostedAt() {
+        return postedAt;
     }
 
     public void setId(long id) {
@@ -67,7 +72,19 @@ public class Post {
         this.content = content;
     }
 
-    public void setPostedWhen(LocalDateTime postedWhen) {
-        this.postedWhen = postedWhen;
+    public void setPostedAt(LocalDateTime postedWhen) {
+        this.postedAt = postedWhen;
+    }
+
+    public List<Comment> getCommentList() {
+        return commentList;
+    }
+
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
+    }
+
+    public void addComment(Comment comment){
+        this.commentList.add(comment);
     }
 }

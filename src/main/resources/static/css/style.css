@@ -16,7 +16,7 @@ body{
     text-align: center;
     margin: 10px;
 }
-button,a{
+a{
     background-color: gray;
     background-image: linear-gradient(to right, gray, lightgray);
     border: none;
@@ -27,11 +27,12 @@ button,a{
     display: inline-block;
     font-size: 16px;
     border-radius: 70%;
+    cursor: pointer;
 
 }
-button,a:hover {background-color: gray}
+a:hover {background-color: gray}
 
-button,a:active {
+a:active {
     background-color: gray;
     background-image: linear-gradient(to right, gray, darkgray);
     box-shadow: 0 5px #666;
