@@ -3,7 +3,6 @@ package com.brights.guestbook2.controller;
 import com.brights.guestbook2.model.Comment;
 import com.brights.guestbook2.model.User;
 import com.brights.guestbook2.repository.PostRepository;
-import com.brights.guestbook2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,15 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
-@SuppressWarnings("unused")
 @Controller
 public class MainPageController {
     @Autowired
     private PostRepository postRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
     public MainPageController(PostRepository postRepository) {
         this.postRepository = postRepository;
     }
@@ -40,5 +34,9 @@ public class MainPageController {
         model.addAttribute("post",postRepository.findById(id));
         model.addAttribute("comment",comment);
         return "post/comments";
+    }
+    @GetMapping("/logout")
+    public String logout(){
+        return "logout";
     }
 }

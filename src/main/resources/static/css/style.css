@@ -36,7 +36,7 @@
 body {
     font-family: Arial, serif;
     padding: 0;
-    background: #f1f1f1;
+    background: gray;
     width: 80%;
     margin: auto;
 
@@ -47,7 +47,7 @@ body {
     padding: 10px;
     font-size: 25px;
     text-align: center;
-    background: white;
+    background: #e20074;
 }
 
 .container {
@@ -138,12 +138,15 @@ footer {
 }
 
 a {
-    color: #336655;
+    color: white;
+    background-color: #e20074;
     text-decoration: none;
 }
 
 a:hover {
-    color: #336655;
+    color: white;
+    background-color: #e20074;
+
     text-decoration: underline;
 }
 

@@ -8,17 +8,21 @@
 
 
     <body>
+<!--        <h1 th:text="'Hello' + ${#request.userPrincipal.name}!"></h1>-->
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
         <header class="header">
             <a th:href="@{/users}">User page</a>
             <a th:href="@{/login}">Login</a>
             <a th:href="@{/users/registration}">Register</a>
-        </header>
             <a th:href="@{/post/add}">Add new post</a><br>
+        </header>
         <p th:if="${listOfPosts.isEmpty()}">There are no post here, be the first to post something!!!</p>
     <div th:if="${!listOfPosts.isEmpty()}">
 
         <h1>Super Duper Blog</h1>
-            <div id="blog" th:each="post : ${listOfPosts}">
+            <div id="post" th:each="post : ${listOfPosts}">
                 <p th:text="${'Posted by: ' + post.user.username}" ></p><br>
                 <p th:text="${'Date: ' + post.postedAt}"></p><br>
                 <p th:text="${'Title: ' + post.title}"></p><br>
