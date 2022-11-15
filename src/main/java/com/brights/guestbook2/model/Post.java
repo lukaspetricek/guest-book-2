@@ -14,7 +14,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
@@ -40,10 +40,6 @@ public class Post {
         return id;
     }
 
-    public User getUser() {
-        return user;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -58,10 +54,6 @@ public class Post {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public void setTitle(String title) {
@@ -86,5 +78,13 @@ public class Post {
 
     public void addComment(Comment comment){
         this.commentList.add(comment);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

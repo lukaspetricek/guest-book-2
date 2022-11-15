@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public User getUserById(long id) {
         Optional<User> optional = this.userRepository.findById(id);  //impl. could be null or empty
-        User user = null;
+        User user;
 
         if (optional.isPresent()) {
             user = optional.get();
@@ -39,7 +39,21 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User getUserByUsername(String username) {
+        Optional<User> optional = Optional.ofNullable(this.userRepository.findByUsername(username));  //impl. could be null or empty
+        User user;
+
+        if (optional.isPresent()) {
+            user = optional.get();
+        } else {
+            throw new RuntimeException("User with id: " + username + " does not exist.");
+        }
+        return user;
+    }
+
+    @Override
     public void deleteUserById(long id) {
         this.userRepository.deleteById(id);
     }
+
 }

@@ -36,7 +36,7 @@ public class User {
     @Column
     private boolean admin;
 
-    @OneToMany (mappedBy = "user")
+    @OneToMany (mappedBy = "id")
     private List<Post> postList;
 
     public User() {
