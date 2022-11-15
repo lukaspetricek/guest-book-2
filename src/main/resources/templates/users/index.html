@@ -5,31 +5,27 @@
   <title>Super Duper Blog</title>
   <link th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
-<body>
-<div>
-  <form th:action="@{/logout}" method="post">
-    <p th:text="'Welcome ' + ${#request.userPrincipal.name}"></p>
-    <input type="submit" value="Sign Out" />
-  </form>
-</div>
-<h1>Users List</h1>
+  <body>
+    <div>
+      <form th:action="@{/logout}" method="post">
+        <p th:text="'Welcome ' + ${#request.userPrincipal.name}"></p>
+        <input type="submit" value="Sign Out" />
+      </form>
+    </div>
 
-<a th:href="@{/users/registration}">Register now!</a>
-<a th:href="@{/}">Back to main page</a>
-<br><br>
-
-<table>
-  <tr>
-  <th>Registered Users</th>
-  </tr>
-
-<!--pokud jsou registrovani uzivatele, vypis je-->
-  <tbody>
-  <tr th:each="user : ${listOfAllUser}">
-    <td th:text="${user.username}"></td>
-
-  </tr>
-  </tbody>
-</table>
-</body>
+    <h1>Users List</h1>
+    <a th:href="@{/users/registration}">Register now!</a>
+    <a th:href="@{/index}">Main page</a>
+    <br><br>
+    <div th:each="user : ${listOfAllUser}">
+      <table>
+        <tr >
+          <th>Users</th>
+        </tr>
+        <tr>
+          <td th:text="${user.getUsername()}"></td>
+        </tr>
+      </table>
+    </div>
+  </body>
 </html>

@@ -31,10 +31,13 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public String showUsers(Model model) {
+    public String showUsers(@ModelAttribute("user") User user,Model model) {
         model.addAttribute("listOfAllUser", userService.getAllUsers());
-
-        return "users/index";
+        if (user.isAdmin()){
+            return "redirect:/users/admin";
+        }else {
+            return "redirect:/users/index";
+        }
     }
 
     @GetMapping("users/registration")
@@ -69,10 +72,14 @@ public class UserController {
 
     @GetMapping("/users/admin")
     public String showAdminPage(Model model) {
-        model.addAttribute("user", new User());
         model.addAttribute("listOfAllUser", userService.getAllUsers());
 
         return "users/admin";
+    }@GetMapping("/users/index")
+    public String showUserPage(Model model) {
+        model.addAttribute("listOfAllUser", userService.getAllUsers());
+
+        return "users/index";
     }
 
     @GetMapping("users/admin/showFormForEdit/{id}")

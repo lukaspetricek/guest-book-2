@@ -16,15 +16,17 @@
   </label>
   <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
 
-  <select th:field="*{admin}">
-    <option th:value="'True'" th:text="Yes"></option>
-    <option th:value="'False'" th:text="No"></option>
-  </select>
+  <label>
+    <select th:field="*{admin}">
+      <option th:value="'True'" th:text="Yes"></option>
+      <option th:value="'False'" th:text="No"></option>
+    </select>
+  </label>
 
-<!--  <input type="hidden" th:field="*{id}">-->
+  <!--  <input type="hidden" th:field="*{id}">-->
   <button type="submit">Save User</button>
 </form>
 <hr>
-<a th:href="@{/}">Back To Guest Book.</a>
+<a th:href="@{/index}">Back to main page</a>
 </body>
 </html>

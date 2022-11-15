@@ -72,10 +72,10 @@ body {
 }
 
 .post {
-    background-color: white;
     padding: 20px;
     margin-top: 20px;
     text-align: center;
+    border: solid black;
 }
 
 .post h2 {
@@ -209,4 +209,8 @@ textarea {
 
 .align-center {
     text-align: center;
+}
+
+.author,.date{
+    font-size: 10px;
 }

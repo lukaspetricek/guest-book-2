@@ -20,20 +20,17 @@
 <div th:if="${!listOfPosts.isEmpty()}">
 
   <h1>Super Duper Blog</h1>
-  <div id="post" th:each="post : ${listOfPosts}">
-    <p th:text="${'Posted by: ' + post.user.username}" ></p><br>
-    <p th:text="${'Date: ' + post.postedAt}"></p><br>
-    <p th:text="${'Title: ' + post.title}"></p><br>
-    <p th:text="${post.content}"></p><br>
+  <div class="post" th:each="post : ${listOfPosts}">
+    <h2 th:text="${'Title: ' + post.title}"></h2><br>
+    <h3 th:text="${post.content}"></h3><br>
+    <p class="author" th:text="${'Posted by: ' + post.user.username}" ></p><br>
+    <p class="date" th:text="${'Date: ' + post.postedAt}"></p><br>
     <p th:if="${post.commentList.isEmpty()}">There are no comments on this post, login/register now and be the first to comment!!!</p>
     <div th:if="${!post.commentList.isEmpty()}">
       <div id="comment" th:each="comment : ${post.commentList}">
         <p th:text="${'Posted by: ' + comment.user}" ></p><br>
         <p th:text="${'Date: ' + comment.createdAt}"></p><br>
         <p th:text="${comment.content}"></p><br>
-        <a>&#128077;</a>
-        <a>&#128078;</a>
-        <a>Reply</a>
       </div>
     </div>
   </div>
