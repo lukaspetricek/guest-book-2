@@ -50,14 +50,15 @@ public class PostController {
         postService.deletePostById(id);
         return "redirect:/";
     }
-
-    @PostMapping("/post/addComment/{id}")
-    public String addComment(@PathVariable(value = "id") Long id, @Valid Comment comment, BindingResult bindingResult){
+    @PostMapping("/post/addComment/{id}{username}")
+    public String addComment(@PathVariable(value = "id") Long id,@PathVariable(value = "username") String username, @Valid Comment comment, BindingResult bindingResult, Model model){
+        User user = userService.getUserByUsername(username);
         if (bindingResult.hasErrors()) {
-            return "post/comments";
+            return "index";
         }
+        comment.setUser(user);
         postService.getPostById(id).addComment(comment);
-        return "redirect:/post/comments";
+        return "redirect:/index";
     }
 
     public PostService getPostService() {

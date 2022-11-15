@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 
 
 @Controller
@@ -24,16 +23,16 @@ public class MainPageController {
     }
 
     @GetMapping("/")
+    public String guestPage(@ModelAttribute("sessionUser") User sessionUser, Model model){
+        model.addAttribute("listOfPosts", postRepository.findAll());
+        return "preview";
+    }
+    @GetMapping("/index")
     public String homePage(@ModelAttribute("sessionUser") User sessionUser, Model model){
+        Comment comment = new Comment();
+        model.addAttribute("comment",comment);
         model.addAttribute("listOfPosts", postRepository.findAll());
         return "index";
-    }
-    @GetMapping("/comment/{id}")
-    public String commentPost(@PathVariable(value = "id") Long id, Model model) {
-        Comment comment = new Comment();
-        model.addAttribute("post",postRepository.findById(id));
-        model.addAttribute("comment",comment);
-        return "post/comments";
     }
     @GetMapping("/logout")
     public String logout(){
