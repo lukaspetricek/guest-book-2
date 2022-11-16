@@ -17,13 +17,15 @@
     <a th:href="@{/users/registration}">Register now!</a>
     <a th:href="@{/index}">Main page</a>
     <br><br>
-    <div th:each="user : ${listOfAllUser}">
+    <div>
       <table>
-        <tr >
-          <th>Users</th>
-        </tr>
         <tr>
+          <th>Username</th>
+          <th>Administrator</th>
+        </tr>
+        <tr th:each="user : ${listOfAllUser}">
           <td th:text="${user.getUsername()}"></td>
+          <td th:text="${user.isAdmin()}"></td>
         </tr>
       </table>
     </div>
