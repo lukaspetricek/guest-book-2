@@ -1,18 +1,24 @@
 package com.brights.guestbook2.service;
 
 import com.brights.guestbook2.model.Post;
-import com.brights.guestbook2.repository.PostRepository;
+import com.brights.guestbook2.repository.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@SuppressWarnings("FieldMayBeFinal")
 @Service
-public class PostServiceImpl implements PostService {
+public class PostServiceImpl implements com.brights.guestbook2.service.PostService {
 
+    private PostService postRepository;
     @Autowired
-    private PostRepository postRepository;
+    public PostServiceImpl(@Lazy PostService postRepository) {
+        super();
+        this.postRepository = postRepository;
+    }
 
     @Override
     public List<Post> getAllPosts() {

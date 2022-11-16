@@ -13,7 +13,7 @@
             </label>
             <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p><br>
             <label>
-                <textarea th:field="*{content}" placeholder="Enter post content"></textarea>
+                <textarea th:field="*{content}" placeholder="Enter post content" required></textarea>
             </label>
             <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></p><br>
         <button type="submit">Save post</button>

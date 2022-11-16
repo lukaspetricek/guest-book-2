@@ -16,8 +16,7 @@
             <a th:href="@{/users}">User page</a>
             <a th:href="@{/post/add}">Add new post</a><br>
         </header>
-        <p th:if="${listOfPosts.isEmpty()}">There are no post here, be the first to post something!!!</p>
-    <div th:if="${!listOfPosts.isEmpty()}">
+    <div>
 
         <h1>Super Duper Blog</h1>
             <div class="post" th:each="post : ${listOfPosts}">
@@ -37,7 +36,13 @@
                         </td>
                     </tr>
                 </table>
-                <a th:href="@{/post/comment}">Add new comment</a>
+                <form action="#" th:action="@{/post/addComment/{id}(id=${post.getId()})}" th:object="${comment}" method="post">
+                    <label>
+                        <input type="text" th:field="*{content}" placeholder="Enter your comment" required>
+                    </label>
+                    <button type="submit">Add new comment</button>
+                    <button type="reset">Clear comment</button>
+                </form>
                 <p th:if="${post.commentList.isEmpty()}">There are no comments on this post, be the first to comment!!!</p>
                 <div th:if="${!post.commentList.isEmpty()}">
                     <div class="comment" th:each="comment : ${post.commentList}">

@@ -13,8 +13,7 @@
       <a th:href="@{/login}">Login</a>
       <a th:href="@{/users/registration}">Register</a>
     </header>
-    <p th:if="${listOfPosts.isEmpty()}">There are no post here, be the first to post something!!!</p>
-    <div th:if="${!listOfPosts.isEmpty()}">
+    <div>
 
       <h1>Super Duper Blog</h1>
       <div class="post" th:each="post : ${listOfPosts}">

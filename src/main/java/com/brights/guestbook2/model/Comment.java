@@ -2,14 +2,13 @@ package com.brights.guestbook2.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
 @Table
-@SuppressWarnings({"JpaDataSourceORMInspection", "unused"})
+@SuppressWarnings({"unused"})
 public class Comment {
 
     @Id
@@ -23,13 +22,12 @@ public class Comment {
     @Column(name = "date",nullable = false)
     private LocalDateTime createdAt;
 
-    @NotNull
     @NotEmpty
     @Size(min = 2, max = 250, message = "Comment should be between 2 and 250 letters")
+    @Column(name = "content",nullable = false)
     private String content;
 
     @ManyToOne
-    @NotNull
     @JoinColumn(name = "post_id", referencedColumnName = "id", nullable = false)
     private Post post;
     public Comment(Date createdAt) {
