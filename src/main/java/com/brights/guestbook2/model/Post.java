@@ -23,7 +23,7 @@ public class Post {
     private String title;
 
     @NotEmpty(message = "Message should not be empty.")
-    @Column(name = "content",nullable = false)
+    @Column(name = "content",nullable = false, columnDefinition = "MEDIUMTEXT")
     private String content;
 
     @Column(name = "date",nullable = false)

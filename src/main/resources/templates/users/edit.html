@@ -8,11 +8,14 @@
 <body>
 <h1>Edit User Account</h1>
 
-<form action="#" th:action="@{/users/registration}" th:object="${user}" method="post">
+<form action="#" th:action="@{/users/admin/editUser}" th:object="${user}" method="post">
   <label>
-    <input type="text" th:field="*{username}" placeholder="Edit username">
+    <input type="text" th:field="*{username}" placeholder="Edit username" required>
+    <input type="text" th:field="*{email}" placeholder="Edit email" required>
     <input type="hidden" th:field="*{password}">
     <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{firstName}">
+    <input type="hidden" th:field="*{lastName}">
   </label>
   <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
 

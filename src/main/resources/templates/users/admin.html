@@ -17,7 +17,6 @@
         <tr>
         <td th:text="${user.id}"></td>
         <td th:text="${user.username}"></td>
-<!--        <td th:text="${user.admin}"></td>-->
         <td th:if="${user.admin}" th:text="Yes"></td>
         <td th:unless="${user.admin}" th:text="No"></td>
         <td>
@@ -30,6 +29,6 @@
         </tr>
     </table>
 
-
+    <a th:href="@{/index}">Back to main page</a>
 </body>
 </html>

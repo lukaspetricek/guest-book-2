@@ -41,6 +41,14 @@ body {
     margin: auto;
 
 }
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    background: #e20074;
+    margin-top: 20px;
+    color: white;
+}
 
 /* Header/Blog Title */
 .header {
@@ -51,7 +59,7 @@ body {
 }
 
 .container {
-    /*width: 80%;*/
+    width: 20%;
     margin: auto;
 }
 
@@ -111,16 +119,6 @@ form {
     margin: auto;
     width: 100%;
 }
-
-
-/* Footer */
-footer {
-    padding: 20px;
-    text-align: center;
-    background: #ddd;
-    margin-top: 20px;
-}
-
 .alert-red {
     padding: 20px;
     background-color: #f44336; /* Red */
@@ -139,14 +137,11 @@ footer {
 a {
     color: white;
     background-color: #e20074;
-    text-decoration: none;
 }
 
 a:hover {
     color: white;
     background-color: #e20074;
-
-    text-decoration: underline;
 }
 
 .green-btn {
