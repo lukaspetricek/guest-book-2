@@ -23,8 +23,8 @@
                 <h2 th:text="${'Title: ' + post.getTitle()}"></h2><br>
                 <img src="https://picsum.photos/250" alt="random picture">
                 <h3 th:text="${post.getContent()}"></h3><br>
-                <p class="author" th:text="${'Posted by: ' + post.user.username}" ></p><br>
-                <p class="date" th:text="${'Date: ' + post.postedAt}"></p><br>
+                <p class="author" th:text="${'Posted by: ' + post.user.username}" ></p>
+                <p class="date" th:text="${'Date: ' + post.postedAt}"></p>
 
                 <table>
                     <tr>
@@ -47,8 +47,8 @@
                 <p th:if="${post.commentList.isEmpty()}">There are no comments on this post, be the first to comment!!!</p>
                 <div th:if="${!post.commentList.isEmpty()}">
                     <div class="comment" th:each="comment : ${post.commentList}">
-                        <p th:text="${'Posted by: ' + comment.user.username}" ></p><br>
-                        <p th:text="${'Date: ' + comment.postedAt}"></p><br>
+                        <p th:text="${'Posted by: ' + comment.user.username}" ></p>
+                        <p th:text="${'Date: ' + comment.postedAt}"></p>
                         <p th:text="${comment.content}"></p><br>
                         <a>&#128077;</a>
                         <a>&#128078;</a>

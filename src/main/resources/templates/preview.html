@@ -20,13 +20,13 @@
         <h2 th:text="${'Title: ' + post.title}"></h2><br>
         <img src="https://picsum.photos/250" alt="random picture">
         <h3 th:text="${post.content}"></h3><br>
-        <p class="author" th:text="${'Posted by: ' + post.user.username}" ></p><br>
-        <p class="date" th:text="${'Date: ' + post.postedAt}"></p><br>
+        <p class="author" th:text="${'Posted by: ' + post.user.username}" ></p>
+        <p class="date" th:text="${'Date: ' + post.postedAt}"></p>
         <p th:if="${post.commentList.isEmpty()}">There are no comments on this post, login/register now and be the first to comment!!!</p>
         <div th:if="${!post.commentList.isEmpty()}">
           <div id="comment" th:each="comment : ${post.commentList}">
-            <p th:text="${'Posted by: ' + comment.user.username}" ></p><br>
-            <p th:text="${'Date: ' + comment.postedAt}"></p><br>
+            <p th:text="${'Posted by: ' + comment.user.username}" ></p>
+            <p th:text="${'Date: ' + comment.postedAt}"></p>
             <p th:text="${comment.content}"></p><br>
           </div>
         </div>

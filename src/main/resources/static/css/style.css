@@ -71,8 +71,8 @@ body {
 }
 
 .post {
-    padding: 20px;
-    margin-top: 20px;
+    padding: 10px;
+    margin-top: 10px;
     text-align: center;
     border: solid black;
 }
@@ -103,13 +103,13 @@ body {
     padding: 10px 10px;
     /*margin-top: 10px;*/
     text-align: justify;
-    width: 94%;
+    /*width: 94%;*/
     margin: 5px auto;
 }
 
 form {
     margin: auto;
-    width: 95%;
+    width: 100%;
 }
 
 
