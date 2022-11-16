@@ -25,10 +25,10 @@
         <p class="date" th:text="${'Date: ' + post.postedAt}"></p>
         <p th:if="${post.commentList.isEmpty()}">There are no comments on this post, login/register now and be the first to comment!!!</p>
         <div th:if="${!post.commentList.isEmpty()}">
-          <div class="comment" th:each="comment : ${post.commentList}">
-            <p th:text="${'Posted by: ' + comment.user.username}" ></p>
-            <p th:text="${'Date: ' + comment.postedAt}"></p>
-            <p th:text="${comment.content}"></p><br>
+          <div class="comment" th:each="postComment : ${post.commentList}">
+            <p th:text="${'Posted by: ' + postComment.user.username}" ></p>
+            <p th:text="${'Date: ' + postComment.postedAt}"></p>
+            <p th:text="${postComment.content}"></p><br>
           </div>
         </div>
       </div>

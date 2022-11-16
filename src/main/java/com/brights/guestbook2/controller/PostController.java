@@ -45,6 +45,21 @@ public class PostController {
         model.addAttribute("post", post);
         return "post/edit";
     }
+    @GetMapping("/comment/edit/{id}")
+    public String editComment(@PathVariable Long id, Model model){
+        Comment comment = commentService.getCommentById(id);
+        model.addAttribute("comment", comment);
+        return "post/editComment";
+    }
+    @PostMapping("/comment/edit/")
+    public String saveEditedComment(@Valid Comment comment, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return "post/editComment";
+        }
+        commentService.saveComment(comment);
+        return "redirect:/index";
+    }
+
     @PostMapping("/post/editPost")
     public String saveEditedPost(@Valid Post post, BindingResult bindingResult){
         if (bindingResult.hasErrors()) {

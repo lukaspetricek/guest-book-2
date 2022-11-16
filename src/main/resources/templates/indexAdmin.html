@@ -24,7 +24,7 @@
         <img src="https://picsum.photos/600/250" alt="Image of the day" title="Image of the day">
 
         <div class="post" th:each="post : ${listOfPosts}">
-            <a th:if="${#request.userPrincipal.name == post.user.getUsername()}" th:href="@{/post/edit/{id}(id=${post.getId()})}">Edit</a>
+            <a th:href="@{/post/edit/{id}(id=${post.getId()})}">Edit</a>
             <h2 th:text="${'Title: ' + post.getTitle()}"></h2><br>
             <h3 th:text="${post.getContent()}"></h3><br>
             <p class="author" th:text="${'Posted by: ' + post.user.username}" ></p><br>
@@ -41,10 +41,10 @@
                 <p th:if="${post.commentList.isEmpty()}">There are no comments on this post, be the first to comment!!!</p>
                 <div th:if="${!post.commentList.isEmpty()}">
                     <div class="comment" th:each="postComment : ${post.commentList}">
-                        <a th:if="${#request.userPrincipal.name == postComment.user.getUsername()}" th:href="@{/comment/edit/{id}(id=${postComment.getId()})}">Edit</a>
                         <p th:text="${'Posted by: ' + postComment.user.username}" ></p>
                         <p th:text="${'Date: ' + postComment.postedAt}"></p>
                         <p th:text="${postComment.content}"></p><br>
+                        <a th:href="@{/comment/edit/{id}(id=${postComment.getId()})}">Edit</a>
                         <a>&#128077;</a>
                         <a>&#128078;</a>
                     </div>

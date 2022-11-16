@@ -1,6 +1,7 @@
 package com.brights.guestbook2.controller;
 
 import com.brights.guestbook2.model.Comment;
+import com.brights.guestbook2.model.User;
 import com.brights.guestbook2.service.CommentServiceImpl;
 import com.brights.guestbook2.service.PostServiceImpl;
 import com.brights.guestbook2.service.UserServiceImpl;
@@ -43,7 +44,12 @@ public class MainPageController {
         model.addAttribute("comment",new Comment());
         model.addAttribute("listOfPosts", postService.getAllPosts());
         model.addAttribute("listOfComments", commentService.getAllComments());
+        User user = userService.getUserByUsername(userPrincipal.getName());
+        if (user.isAdmin()){
+            return "indexAdmin";
+        }else {
         return "index";
+        }
     }
     @GetMapping("/logout")
     public String logout(){
