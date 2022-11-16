@@ -9,14 +9,14 @@
 
   <body>
     <header class="header">
-      <p style="color: white" th:text="'Hello guest, login to unlock additional site features'"></p>
+      <p style="color: white" th:text="'Hello guest, login now and post something!'"></p>
       <a th:href="@{/login}">Login</a>
       <a th:href="@{/users/registration}">Register</a>
+      <h1>Super Duper Blog</h1><br>
+      <img src="https://picsum.photos/700/250" alt="Image of the day" title="Image of the day">
     </header>
     <div>
 
-      <h1>Super Duper Blog</h1>
-      <img src="https://picsum.photos/600/250" alt="Image of the day" title="Image of the day">
 
       <div class="post" th:each="post : ${listOfPosts}">
         <h2 th:text="${'Title: ' + post.title}"></h2><br>

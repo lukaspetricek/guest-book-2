@@ -6,12 +6,10 @@
   <link th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body>
-<h1>Registration Form</h1>
-
-<div class="container text-center">
-  <div>
+<header class="header">
     <h1>User Registration - Sign Up</h1>
-  </div>
+</header>
+
   <form th:action="@{/process_register}" th:object="${user}"
         method="post" style="max-width: 600px; margin: 0 auto;">
     <table>
@@ -55,7 +53,6 @@
     <button type="submit" >Sign Up</button>
   </form>
 <hr>
-</div>
 <a th:href="@{/users}">User List</a>
 <a th:href="@{/index}">Main page</a>
 </body>

@@ -59,6 +59,11 @@ public class PostController {
         commentService.saveComment(comment);
         return "redirect:/index";
     }
+    @GetMapping("/users/admin/deleteComment/{id}")
+    public String deleteComment(@PathVariable Long id){
+        commentService.deleteCommentById(id);
+        return "redirect:/index";
+    }
 
     @PostMapping("/post/editPost")
     public String saveEditedPost(@Valid Post post, BindingResult bindingResult){

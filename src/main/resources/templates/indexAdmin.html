@@ -17,11 +17,11 @@
             </div>
             <a th:href="@{/users}">User page</a>
             <a th:href="@{/post/add}">Add new post</a><br>
+            <h1>Super Duper Blog</h1><br>
+            <img src="https://picsum.photos/700/250" alt="Image of the day" title="Image of the day">
         </header>
     <div>
 
-        <h1>Super Duper Blog</h1>
-        <img src="https://picsum.photos/600/250" alt="Image of the day" title="Image of the day">
 
         <div class="post" th:each="post : ${listOfPosts}">
             <a th:href="@{/post/edit/{id}(id=${post.getId()})}">Edit</a>
@@ -29,7 +29,6 @@
             <h3 th:text="${post.getContent()}"></h3><br>
             <p class="author" th:text="${'Posted by: ' + post.user.username}" ></p><br>
             <p class="date" th:text="${'Date: ' + post.postedAt}"></p><br>
-            <a>&#10084; Like</a>
 
                 <form class="container" action="#" th:action="@{/post/addComment/{id}(id=${post.getId()})}" th:object="${comment}" method="post">
                     <label>

@@ -6,7 +6,10 @@
         <link th:href="@{/css/style.css}" rel="stylesheet"/>
     </head>
     <body>
-        <h1>New post</h1>
+    <header class="header">
+    <h1>New post</h1>
+    </header>
+
         <form action="#" th:action="@{/post/checkPost{username}(username=${#request.userPrincipal.name})}" th:object="${post}" method="post">
             <label>
                 <input type="text" th:field="*{title}" placeholder="Enter post title">

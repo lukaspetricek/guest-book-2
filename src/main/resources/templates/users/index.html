@@ -6,12 +6,12 @@
   <link th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
   <body>
-    <div>
+  <header class="header">
       <form th:action="@{/logout}" method="post">
         <p th:text="'Welcome ' + ${#request.userPrincipal.name}"></p>
         <input type="submit" value="Sign Out" />
       </form>
-    </div>
+  </header>
 
     <h1>Users List</h1>
     <a th:href="@{/users/registration}">Register now!</a>

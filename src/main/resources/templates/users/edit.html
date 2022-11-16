@@ -6,7 +6,10 @@
   <link th:href="@{/style.css}" rel="stylesheet"/>
 </head>
 <body>
+<header class="header">
 <h1>Edit User Account</h1>
+</header>
+
 
 <form action="#" th:action="@{/users/admin/editUser}" th:object="${user}" method="post">
   <label>
