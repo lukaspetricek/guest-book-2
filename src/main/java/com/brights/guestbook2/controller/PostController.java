@@ -39,6 +39,20 @@ public class PostController {
         model.addAttribute("post", new Post());
         return "post/new";
     }
+    @GetMapping("/post/edit/{id}")
+    public String editPost(@PathVariable Long id, Model model){
+        Post post = postService.getPostById(id);
+        model.addAttribute("post", post);
+        return "post/edit";
+    }
+    @PostMapping("/post/editPost")
+    public String saveEditedPost(@Valid Post post, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return "post/edit";
+        }
+        postService.savePost(post);
+        return "redirect:/index";
+    }
 
     @PostMapping("/post/checkPost{username}")
     public String checkPost(@PathVariable(value = "username") String username, @Valid Post post, BindingResult bindingResult){

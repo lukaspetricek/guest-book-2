@@ -137,14 +137,11 @@ form {
 a {
     color: white;
     background-color: #e20074;
-    text-decoration: none;
 }
 
 a:hover {
     color: white;
     background-color: #e20074;
-
-    text-decoration: underline;
 }
 
 .green-btn {
