@@ -8,7 +8,7 @@
 
 
     <body>
-        <p th:text="'Welcome ' + ${#request.userPrincipal.name}"></p>
+        <p th:text="'Welcome ' + ${user.name}"></p>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>
         </form>
@@ -21,7 +21,7 @@
         <h1>Super Duper Blog</h1>
             <div class="post" th:each="post : ${listOfPosts}">
                 <h2 th:text="${'Title: ' + post.getTitle()}"></h2><br>
-                <img src="https://picsum.photos/800/250" alt="random picture">
+                <img src="https://picsum.photos/250" alt="random picture">
                 <h3 th:text="${post.getContent()}"></h3><br>
                 <p class="author" th:text="${'Posted by: ' + post.user.username}" ></p><br>
                 <p class="date" th:text="${'Date: ' + post.postedAt}"></p><br>
@@ -47,8 +47,8 @@
                 <p th:if="${post.commentList.isEmpty()}">There are no comments on this post, be the first to comment!!!</p>
                 <div th:if="${!post.commentList.isEmpty()}">
                     <div class="comment" th:each="comment : ${post.commentList}">
-                        <p th:text="${'Posted by: ' + comment.user}" ></p><br>
-                        <p th:text="${'Date: ' + comment.createdAt}"></p><br>
+                        <p th:text="${'Posted by: ' + comment.user.username}" ></p><br>
+                        <p th:text="${'Date: ' + comment.postedAt}"></p><br>
                         <p th:text="${comment.content}"></p><br>
                         <a>&#128077;</a>
                         <a>&#128078;</a>

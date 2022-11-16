@@ -4,7 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table
@@ -20,7 +19,7 @@ public class Comment {
     private User user;
 
     @Column(name = "date",nullable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime postedAt;
 
     @NotEmpty
     @Size(min = 2, max = 250, message = "Comment should be between 2 and 250 letters")
@@ -30,12 +29,9 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "post_id", referencedColumnName = "id", nullable = false)
     private Post post;
-    public Comment(Date createdAt) {
-        this.createdAt = LocalDateTime.now();
-    }
 
     public Comment() {
-
+        postedAt = LocalDateTime.now();
     }
 
     public long getId() {
@@ -54,12 +50,12 @@ public class Comment {
         this.user = user;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public LocalDateTime getPostedAt() {
+        return postedAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setPostedAt(LocalDateTime createdAt) {
+        this.postedAt = createdAt;
     }
 
     public String getContent() {

@@ -4,7 +4,7 @@ import com.brights.guestbook2.model.Post;
 
 import java.util.List;
 
-@SuppressWarnings("unused")
+
 public interface PostService {
     List<Post> getAllPosts();
 

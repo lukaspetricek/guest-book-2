@@ -1,7 +1,7 @@
 package com.brights.guestbook2.service;
 
 import com.brights.guestbook2.model.Post;
-import com.brights.guestbook2.repository.PostService;
+import com.brights.guestbook2.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -11,11 +11,11 @@ import java.util.Optional;
 
 @SuppressWarnings("FieldMayBeFinal")
 @Service
-public class PostServiceImpl implements com.brights.guestbook2.service.PostService {
+public class PostServiceImpl implements PostService {
 
-    private PostService postRepository;
+    private PostRepository postRepository;
     @Autowired
-    public PostServiceImpl(@Lazy PostService postRepository) {
+    public PostServiceImpl(@Lazy PostRepository postRepository) {
         super();
         this.postRepository = postRepository;
     }
@@ -30,11 +30,11 @@ public class PostServiceImpl implements com.brights.guestbook2.service.PostServi
         this.postRepository.save(post);
     }
 
-    @SuppressWarnings("UnusedAssignment")
+
     @Override
     public Post getPostById(long id) {
         Optional<Post> optionalPost = this.postRepository.findById(id);
-        Post post = null;
+        Post post;
 
         if(optionalPost.isPresent()){
             post = optionalPost.get();

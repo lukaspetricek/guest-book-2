@@ -3,6 +3,7 @@ package com.brights.guestbook2.controller;
 import com.brights.guestbook2.model.Comment;
 import com.brights.guestbook2.model.Post;
 import com.brights.guestbook2.model.User;
+import com.brights.guestbook2.service.CommentServiceImpl;
 import com.brights.guestbook2.service.PostServiceImpl;
 import com.brights.guestbook2.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,16 @@ import java.security.Principal;
 public class PostController {
     private PostServiceImpl postService;
     private UserServiceImpl userService;
+    private CommentServiceImpl commentService;
 
 
 
     @Autowired
-    public PostController(PostServiceImpl postService, UserServiceImpl userService) {
+    public PostController(PostServiceImpl postService, UserServiceImpl userService, CommentServiceImpl commentService) {
 
         this.postService = postService;
         this.userService = userService;
+        this.commentService = commentService;
     }
 
     @GetMapping("/post/add")
@@ -55,8 +58,10 @@ public class PostController {
 
     @PostMapping("/post/addComment/{id}")
     public String addComment(@PathVariable(value = "id") Long id,Principal userPrincipal, @Valid Comment comment){
+        comment.setPost(postService.getPostById(id));
         comment.setUser(userService.getUserByUsername(userPrincipal.getName()));
         postService.getPostById(id).addComment(comment);
+        commentService.saveComment(comment);
         return "redirect:/index";
     }
 }
