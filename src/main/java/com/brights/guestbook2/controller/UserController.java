@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @SuppressWarnings({"FieldCanBeLocal", "unused"})
 @Controller
@@ -31,7 +32,8 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public String showUsers(@ModelAttribute("user") User user,Model model) {
+    public String showUsers(Principal userPrincipal, Model model) {
+        User user = userService.getUserByUsername(userPrincipal.getName());
         model.addAttribute("listOfAllUser", userService.getAllUsers());
         if (user.isAdmin()){
             return "redirect:/users/admin";
@@ -64,6 +66,10 @@ public class UserController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
+        if (userService.getAllUsers().size()==0){
+            System.out.println("Admin set");
+            user.setAdmin(true);
+        }
 
         userService.saveUser(user);
 

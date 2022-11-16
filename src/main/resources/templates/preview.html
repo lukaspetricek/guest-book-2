@@ -7,34 +7,31 @@
 </head>
 
 
-<body>
-<!--        <h1 th:text="'Hello' + ${#request.userPrincipal.name}!"></h1>-->
-<form th:action="@{/logout}" method="post">
-  <input type="submit" value="Sign Out"/>
-</form>
-<header class="header">
-  <a th:href="@{/login}">Login</a>
-  <a th:href="@{/users/registration}">Register</a>
-</header>
-<p th:if="${listOfPosts.isEmpty()}">There are no post here, be the first to post something!!!</p>
-<div th:if="${!listOfPosts.isEmpty()}">
+  <body>
+    <p th:text="'Hello guest, login to unlock additional site features'"></p>
+    <header class="header">
+      <a th:href="@{/login}">Login</a>
+      <a th:href="@{/users/registration}">Register</a>
+    </header>
+    <p th:if="${listOfPosts.isEmpty()}">There are no post here, be the first to post something!!!</p>
+    <div th:if="${!listOfPosts.isEmpty()}">
 
-  <h1>Super Duper Blog</h1>
-  <div class="post" th:each="post : ${listOfPosts}">
-    <h2 th:text="${'Title: ' + post.title}"></h2><br>
-    <h3 th:text="${post.content}"></h3><br>
-    <p class="author" th:text="${'Posted by: ' + post.user.username}" ></p><br>
-    <p class="date" th:text="${'Date: ' + post.postedAt}"></p><br>
-    <p th:if="${post.commentList.isEmpty()}">There are no comments on this post, login/register now and be the first to comment!!!</p>
-    <div th:if="${!post.commentList.isEmpty()}">
-      <div id="comment" th:each="comment : ${post.commentList}">
-        <p th:text="${'Posted by: ' + comment.user}" ></p><br>
-        <p th:text="${'Date: ' + comment.createdAt}"></p><br>
-        <p th:text="${comment.content}"></p><br>
+      <h1>Super Duper Blog</h1>
+      <div class="post" th:each="post : ${listOfPosts}">
+        <h2 th:text="${'Title: ' + post.title}"></h2><br>
+        <h3 th:text="${post.content}"></h3><br>
+        <p class="author" th:text="${'Posted by: ' + post.user.username}" ></p><br>
+        <p class="date" th:text="${'Date: ' + post.postedAt}"></p><br>
+        <p th:if="${post.commentList.isEmpty()}">There are no comments on this post, login/register now and be the first to comment!!!</p>
+        <div th:if="${!post.commentList.isEmpty()}">
+          <div id="comment" th:each="comment : ${post.commentList}">
+            <p th:text="${'Posted by: ' + comment.user}" ></p><br>
+            <p th:text="${'Date: ' + comment.createdAt}"></p><br>
+            <p th:text="${comment.content}"></p><br>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-</div>
-</body>
+    </div>
+  </body>
 </html>
